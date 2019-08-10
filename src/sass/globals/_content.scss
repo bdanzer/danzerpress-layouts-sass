@@ -1,0 +1,12 @@
+p {
+    @extend %body-content;
+}
+
+p,
+li,
+a,
+ul,
+input,
+textarea {
+    font-family: $secondary-font-family;
+}

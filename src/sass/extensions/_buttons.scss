@@ -1,0 +1,41 @@
+%danzerpress-button-modern {
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: 600;
+    font-family: $primary-font-family;
+    border: 2px solid #05C4EB;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    padding: 14px 35px 15px;
+    opacity: 1;
+    background: #05C4EB;
+    color: white;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    &:hover {
+        background: #242a2f;
+        opacity: 1;
+        transition: .5s;
+        color: white;
+        border-color: #242a2f;
+    }
+}
+
+%danzerpress-button-modern-transparent {
+    @extend %danzerpress-button-modern;
+    background: transparent;
+    color: $primary-font-color;
+    margin-top: 8px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.danzerpress-button-left {
+    margin-right: 15px;
+}
+
+%danzerpress-button-off {
+    background: #494949;
+    border-color: #494949;
+}

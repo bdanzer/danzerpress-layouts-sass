@@ -1,0 +1,23 @@
+@mixin danzerpress-mq-desk() {
+    @media screen and (max-width: $desk) {
+        @content;
+    }
+}
+
+@mixin danzerpress-mq-twide() {
+    @media screen and (max-width: $twide) {
+        @content;
+    }
+}
+
+@mixin danzerpress-mq-pwide() {
+    @media screen and (max-width: $pwide) {
+        @content;
+    }
+}
+
+@mixin danzerpress-mq-ptall() {
+    @media screen and (max-width: $ptall) {
+        @content;
+    }
+}

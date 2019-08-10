@@ -1,0 +1,105 @@
+%ie-compatibility {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+%danzerpress-col-1 {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+%danzerpress-col-2 {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    @extend %danzerpress-sm-1;
+}
+
+%danzerpress-col-3 {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    @extend %danzerpress-sm-1;
+    @extend %danzerpress-sm-2;
+}
+
+%danzerpress-col-4 {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    @extend %danzerpress-sm-1;
+    @extend %danzerpress-sm-2;
+}
+
+%danzerpress-col-5 {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+    @extend %danzerpress-sm-1;
+    @extend %danzerpress-sm-2;
+}
+
+%danzerpress-col-6 {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+    @extend %danzerpress-sm-1;
+    @extend %danzerpress-sm-2;
+}
+
+%danzerpress-one-third {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    @extend %danzerpress-md-1;
+}
+
+%danzerpress-two-thirds {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    @extend %danzerpress-md-1;
+}
+
+%danzerpress-one-fourth {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    @extend %danzerpress-md-1;
+}
+
+%danzerpress-one-half {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;  
+    @extend %danzerpress-md-1;
+}
+
+%danzerpress-three-fourths {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+    @extend %danzerpress-md-1;
+}
+
+%danzerpress-four-fifths {
+    @extend %ie-compatibility;
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+    @extend %danzerpress-md-1;
+}

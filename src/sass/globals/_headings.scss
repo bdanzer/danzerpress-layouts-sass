@@ -1,0 +1,30 @@
+h1 {
+    @extend %danzerpress-title;
+}
+
+h2 {
+    @extend %danzerpress-title--h2;
+}
+
+h3 {
+    @extend %danzerpress-title--h3;
+}
+
+h4 {
+    @extend %danzerpress-title--h4;
+}
+
+h5 {
+    @extend %danzerpress-title--h5;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+    font-family: $primary-font-family;
+    font-weight: 600;
+    color: $primary-font-color;
+}

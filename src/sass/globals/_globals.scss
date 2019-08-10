@@ -1,0 +1,39 @@
+@import './content';
+@import './headings';
+
+html {
+	box-sizing: border-box;
+	-ms-overflow-style: scrollbar;
+	display: flex;
+    flex-direction: column;
+	width: 100%;
+	.main-content {
+		flex: 1 0 auto;
+	}
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+.danzerpress-col-1 {
+    @extend %danzerpress-col-1;
+}
+
+.danzerpress-col-2 {
+    @extend %danzerpress-col-2;
+}
+
+.danzerpress-col-3 {
+    @extend %danzerpress-col-3;
+}
+
+.danzerpress-col-4 {
+    @extend %danzerpress-col-4;
+}
+
+.danzerpress-col-5 {
+    @extend %danzerpress-col-5;
+}
