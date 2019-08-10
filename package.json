@@ -1,0 +1,15 @@
+{
+  "name": "danzerpress-layouts",
+  "version": "0.1.0",
+  "description": "Sass framework for building websites, must be included",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-sass --include-path scss src/styles/main.scss dist/css/main.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.1"
+  }
+}
