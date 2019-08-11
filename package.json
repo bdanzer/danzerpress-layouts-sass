@@ -1,6 +1,6 @@
 {
   "name": "danzerpress-layouts",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Sass framework for building websites, must be included",
   "main": "index.js",
   "scripts": {
