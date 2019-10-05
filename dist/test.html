@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="row">
+              <div class="item">
+                <div class="box"></div>
+              </div>
+              <div class="item">
+                <div class="box"></div>
+              </div>
+              <div class="item">
+                <div class="box">
+                  <div class="nested-box"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="box">
+                  <div class="nested-box"></div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <h1 style="text-align: left;">Cards</h1>
+            <div class="row">
+              <div class="card will-animate">
+                <div class="image"></div>
+                <div class="content">
+                  <h2 class="card-title">Hello World!</h2>
+                  <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <a class="button">Button</a>
+                </div>
+              </div>
+              <div class="card will-animate">
+                <div class="image"></div>
+                <div class="content">
+                    Hello World!
+                </div>
+              </div>
+              <div class="card will-animate">
+                <div class="image"></div>
+                <div class="content">Hello World!</div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="item left">
+                    <div class="box"></div>
+                </div>
+                <div class="item right">
+                    <div class="box"></div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="item">
+                    <div class="box">Hello World</div>
+                </div>
+                <div class="item">
+                    <div class="box">Hello World</div>
+                </div>
+            </div>
+            <br>
+            <h1 style="text-align: left;">Cards</h1>
+            <div class="row">
+              <div class="card will-animate">
+                <div class="image"></div>
+                <div class="content">
+                  <h2 class="card-title">Hello World!</h2>
+                  <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <a class="button">Button</a>
+                </div>
+              </div>
+              <div class="card will-animate">
+                <div class="image"></div>
+                <div class="content">
+                    Hello World!
+                </div>
+              </div>
+              <div class="card will-animate">
+                <div class="image"></div>
+                <div class="content">Hello World!</div>
+              </div>
+            </div>
+            <br>
+            <h1 style="text-align: left;">Cards</h1>
+            <div class="row">
+              <div class="card will-animate">
+                <div class="image"></div>
+                <div class="content">
+                  <h2 class="card-title">Hello World!</h2>
+                  <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <a class="button">Button</a>
+                </div>
+              </div>
+              <div class="card will-animate">
+                <div class="image"></div>
+                <div class="content">
+                    Hello World!
+                </div>
+              </div>
+              <div class="card will-animate">
+                <div class="image"></div>
+                <div class="content">Hello World!</div>
+              </div>
+            </div>
+          </div>
+          <script>
+            
+
+            // document.addEventListener("scroll", () => {
+            //     
+            // });
+
+            class AnimationFrames {
+                constructor(callback) 
+                {
+                    this.callback = callback;
+                    this.latestKnownScrollY = 0;
+                    this.frame;
+
+                    // Renamed for Safari support.
+                    this.wrappr = window;
+                }
+
+                onScroll(e) {
+                    this.latestKnownScrollY = this.wrappr.scrollTop;
+                    this.frame = this.frame || requestAnimationFrame(this.update.bind(this));
+                }
+
+                update() {
+                    // headr.style.transform = ('translateY(' + (-latestKnownScrollY) +'px) translateZ(0)');
+                    this.callback();
+                    this.frame = false;
+                }
+            }
+
+            let animate = document.querySelectorAll('.will-animate');
+            function handleSuccess(card) {
+                card.style.opacity = '1';
+                card.classList.add('animated');
+                card.querySelector('.image').style.animationName = 'fadeInUp';
+                card.querySelector('.content').style.animationName = 'fadeInRight';
+            }
+
+            let animationClass = new AnimationFrames(function() {
+                    // let modifier = (this.latestKnownScrollY * .8);
+                    // this.headr.style.transform = 'translate3d(0px, ' + -modifier + 'px, 0px)';
+                    // console.log('callback');
+
+                    animate.forEach(card => {
+                        let cardOffset = card.offsetTop - (window.outerHeight * .8);
+                        let windowOffset = window.pageYOffset;
+
+                        card.style.opacity = '0';
+                        card.style.transition = '.25s';
+                        card.querySelector('.image').style.animationName = 'none';
+                        card.querySelector('.content').style.animationName = 'none';
+
+                        console.log('working', cardOffset, 'window', windowOffset, cardOffset < windowOffset);
+                        (cardOffset < windowOffset) ? handleSuccess(card) : card.classList.remove('animated');
+                    });
+            });
+
+            animationClass.wrappr.addEventListener('scroll', animationClass.onScroll.bind(animationClass));  
+
+          </script>
+    </body>
+</html>

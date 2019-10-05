@@ -4,11 +4,13 @@
   "description": "Sass framework for building websites, must be included",
   "main": "index.js",
   "scripts": {
-    "build": "node-sass --include-path scss src/styles/main.scss dist/css/main.css"
+    "build": "node-sass --include-path scss src/styles/main.scss dist/css/danzerpress-layouts.css --output-style=compressed",
+    "watch": "node-sass src/styles/main.scss -wo dist/css --source-map=true --output-style=nested"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "animate-sass": "^0.8.2",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.1"
   }

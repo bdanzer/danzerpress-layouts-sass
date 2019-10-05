@@ -1,23 +1,237 @@
-@mixin danzerpress-mq-desk() {
-    @media screen and (max-width: $desk) {
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 70px 0;
+}
+
+@mixin force-fw() {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+@mixin justify($alignment) {
+    justify-content: #{$alignment};
+}
+
+@mixin align($alignment) {
+    align-items: #{$alignment};
+}
+
+@mixin shadow($index: 1) {
+    box-shadow: nth($shadows, $index);
+}
+
+@mixin breakpoint($breakpoint, $type: 'min') {
+    @media screen and (#{$type}-width: #{$breakpoint}px) {
         @content;
     }
 }
 
-@mixin danzerpress-mq-twide() {
-    @media screen and (max-width: $twide) {
+@mixin dynamic-breakpoint($breakpoint-key, $type: 'min') {
+    @if map-get($mapped-breakpoints, $breakpoint-key) {
+        @include breakpoint(map-get($mapped-breakpoints, $breakpoint-key), $type) {
+            @content;
+        } 
+    }
+}
+
+@mixin between($breakpoint1, $breakpoint2) {
+    @media screen and (min-width:#{$breakpoint1}px) and (max-width:#{$breakpoint2}px) {
         @content;
     }
 }
 
-@mixin danzerpress-mq-pwide() {
-    @media screen and (max-width: $pwide) {
-        @content;
+@mixin gutter-fix($padding) {
+    margin: 0 -#{$padding}px
+}
+
+@mixin col-container($col) {
+    flex: 0 0 calc((100% / #{$col}));
+    max-width: calc((100% / #{$col}));
+    width: 100%;
+}
+
+@mixin wrap($width: 1300px) {
+    max-width: #{$width};
+    margin: auto;
+}
+
+@function order-map($looper, $modeled-map, $unmodeled-map) {
+    $unsorted-map: ();
+        @each $key, $value in $looper {
+            @if map-get($looper, $key) and map-get($mapped-breakpoints, $key) {
+                $unsorted-map: map-merge($unsorted-map, ($key: map-get($unmodeled-map, $key)));
+            }
+        }
+
+    @return map-merge($modeled-map, $unsorted-map);
+}
+
+@mixin parse-css($css, $key) {
+    @if (map-get($css, $key)) {
+        @each $property, $prop-value in map-get($css, $key) {
+            #{$property}: $prop-value;
+        }
     }
 }
 
-@mixin danzerpress-mq-ptall() {
-    @media screen and (max-width: $ptall) {
-        @content;
+//predefined cols
+@mixin col($col-map: (default: 1), $map-override: false) {
+    @if $map-override {
+        $col-map: map-merge($col-map, $map-override)
     }
+
+    $css: ();
+    @if map-get($col-map, 'css') {
+        $css: map-get($col-map, 'css');
+        @include parse-css($css, 'default');
+    }
+
+    @include col-container(map-get($col-map, "default"));
+
+    //This will order the map so that breakpoint widths can be provided in any order
+    $sorted-map: order-map($col-map, $modeled-order, $mapped-breakpoints);
+
+    //Get the mapped breakpoints and pass it to dynamic-breakpoint and col-container
+    @each $key, $value in $sorted-map {
+        @include dynamic-breakpoint($key) {
+            @if map-get($sorted-map, $key) { //this checks if the value is false from merging into the model with order-map
+                @include col-container(map-get($col-map, $key));
+            }
+
+            @include parse-css($css, $key)
+        }
+    }
+}
+
+@mixin order($order) {
+    order: $order;
+}
+
+@mixin row($options: (gutter-fix: false)){
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    @if map-get($options, "gutter-fix") {
+        @include gutter-fix(map-get($options, "gutter-fix")) 
+    }
+}
+
+@mixin column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+@mixin box {
+    flex: 1 1 auto;
+    min-height: 1px;
+}
+
+@mixin button($color: #05C4EB) {
+    white-space: nowrap;
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: 600;
+    font-family: Raleway;
+    border: 2px solid $color;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    padding: 14px 35px 15px;
+    opacity: 1;
+    background: $color;
+    color: white;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+}
+
+.wrap {
+    @include wrap();
+    padding: 0 15px;
+}
+
+.row {
+    @include row($gutter-fix);
+}
+
+.item {
+    @include column();
+    @include col($col-4, (xs: 2));
+    padding: 0 15px;
+    height: 100px;
+    width: 100px;
+}
+
+.box {
+    @include box();
+    background: lightblue;
+    @include shadow(1);
+    @include row();
+    @include justify('center');
+    @include align('center');
+}
+
+.nested-box {
+    background: grey;
+    height: 50px;
+    width: 50px;
+    @include shadow(4);
+}
+
+//DEMO
+.card {
+    @include col($col-3);
+    @include row();
+    .image {
+        background: url(https://source.unsplash.com/random);
+        height: auto;
+        width: 40%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: cover;
+        &:before {
+            padding-top: 100%;
+            display: block;
+            content: "";
+        }
+        @include animate-prefixer(animation-name, fadeInUp);
+        margin-bottom: -20px;
+    }
+    .content {
+        margin-top: -20px;
+        @include animate-prefixer(animation-name, fadeInDown);
+        width: 60%;
+        @include box();
+        background: white;
+        padding: 2em;
+        @include shadow(3);
+        @include column();
+        .card-title {
+            margin-top: 0;
+        }
+        .card-description {
+            flex: 1;
+        }
+        .button {
+            @include button();
+            align-self: flex-start;
+        }
+    }
+}
+
+.item.left {
+    @include col($two-thirds);
+}
+
+.item.right {
+    @include col($one-third);
 }

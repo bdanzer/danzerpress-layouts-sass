@@ -1,5 +1,7 @@
 p {
-    @extend %body-content;
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 p,

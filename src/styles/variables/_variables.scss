@@ -1,11 +1,65 @@
+$use-all: true;
+
 $primary-font-family: 'Raleway', sans-serif;
 $secondary-font-family: 'Open Sans', sans-serif;
 
 $primary-font-color: #333333;
-
-$desk: 1450px;
-$twide: 1024px;
-$pwide: 767px;
-$ptall: 500px;
-
 $light-grey: #efefef;
+
+$xlg: 1400; 
+$lg : 1300;
+$md : 1024;
+$sm : 768;
+$xs : 480;
+
+$mapped-breakpoints: (
+    'xs' : $xs,
+    'sm' : $sm,
+    'md' : $md,
+    'lg' : $lg,
+    'xlg': $xlg
+);
+
+$modeled-order: (
+    'xs' : false,
+    'sm' : false,
+    'md' : false,
+    'lg' : false,
+    'xlg': false
+);
+
+$col-css: (
+    'default': (
+        padding: 0 15px,
+        margin-bottom: 20px
+    )
+);
+
+//Predifined cols
+$col-2: (default: 1, md: 2, css: $col-css);
+$col-3: (default: 1, md: 3, sm: 2, css: $col-css);
+$col-4: (default: 1, md: 4, css: $col-css);
+$col-5: (default: 1, lg: 5, md: 3, sm: 1, css: $col-css);
+$col-6: (default: 1, md: 3, sm: 2, xs: 1, css: $col-css);
+
+$one-third : (default: 1, md: 3, css: $col-css);
+$two-thirds: (default: 1, md: 1.5, css: $col-css);
+
+$cols: (
+    "col-2": $col-2,
+    "col-3": $col-3,
+    "col-4": $col-4,
+    "col-5": $col-5,
+    "col-6": $col-6,
+    "one-third" : $one-third,
+    "two-thirds": $two-thirds
+);
+
+$gutter-fix: (gutter-fix: 15);
+
+$shadows: (
+    (0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)),
+    (0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)),
+    (0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)),
+    (0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22))
+);

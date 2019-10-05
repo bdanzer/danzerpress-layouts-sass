@@ -1,9 +1,6 @@
-%danzerpress-flex-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.dp-flex-row {
+    @include row();
 }
-%danzerpress-flex-column {
-    display: flex;
-    flex-direction: column;
+.dp-flex-column {
+    @include column();
 }
