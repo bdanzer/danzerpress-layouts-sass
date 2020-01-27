@@ -619,3 +619,87 @@ div.wpcf7-validation-errors {
         max-width: 16.6667%;
     }
 }
+
+//Use this for testing
+// .wrap {
+//     @include wrap();
+//     padding: 0 15px;
+// }
+
+// .row {
+//     @include row($gutter-fix);
+// }
+
+// .item {
+//     @include column();
+//     @include col($col-4, (xs: 2));
+//     padding: 0 15px;
+//     height: 100px;
+//     width: 100px;
+// }
+
+// .box {
+//     @include box();
+//     background: lightblue;
+//     @include shadow(1);
+//     @include row();
+//     @include justify('center');
+//     @include align('center');
+// }
+
+// .nested-box {
+//     background: grey;
+//     height: 50px;
+//     width: 50px;
+//     @include shadow(4);
+// }
+
+// //DEMO
+// .card {
+//     @include col($col-3);
+//     @include row();
+//     .image {
+//         background: url(https://source.unsplash.com/random);
+//         height: auto;
+//         width: 40%;
+//         background-position: center;
+//         background-repeat: no-repeat;
+//         background-position: 50%;
+//         background-size: cover;
+//         &:before {
+//             padding-top: 100%;
+//             display: block;
+//             content: "";
+//         }
+//         @include animate-prefixer(animation-name, fadeInUp);
+//         margin-bottom: -20px;
+//     }
+//     .content {
+//         margin-top: -20px;
+//         @include animate-prefixer(animation-name, fadeInDown);
+//         width: 60%;
+//         @include box();
+//         background: white;
+//         padding: 2em;
+//         @include shadow(3);
+//         @include column();
+//         .card-title {
+//             margin-top: 0;
+//         }
+//         .card-description {
+//             flex: 1;
+//         }
+//         .button {
+//             @include button();
+//             align-self: flex-start;
+//         }
+//     }
+// }
+
+// .item.left {
+//     @include col($two-thirds);
+// }
+
+// .item.right {
+//     @include col($one-third);
+// }
