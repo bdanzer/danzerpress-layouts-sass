@@ -17,6 +17,7 @@ This process can be cumbersome since the html is now set to need that class. Wha
 
 ```scss
 .posts {
+    @include row();
     .item {
         @include col($col-3);
     }
